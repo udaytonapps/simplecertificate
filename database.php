@@ -13,6 +13,7 @@ $DATABASE_INSTALL = array(
     link_id       INTEGER NOT NULL,
     user_id       INTEGER NOT NULL,
     title         VARCHAR(255) NULL,
+    header        VARCHAR(255) NULL,
     issued_by     VARCHAR(255) NULL,
     DETAILS       TEXT NULL,
     modified      datetime NOT NULL,
