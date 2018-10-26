@@ -22,10 +22,30 @@ function findDisplayName($user_id, $PDOX, $p) {
 }
 
 if($certificate) {
-    $issueName = $certificate["issued_by"];
-    $details = $certificate["DETAILS"];
-    $TITLE = $certificate["title"];
-    $HEADER = $certificate["header"];
+    if($certificate["issued_by"] == null) {
+        $issueName = "name";
+    }
+    else {
+        $issueName = $certificate["issued_by"];
+    }
+    if($certificate["DETAILS"] == null) {
+        $details = "description of award";
+    }
+    else {
+        $details = $certificate["DETAILS"];
+    }
+    if($certificate["title"] == null) {
+        $TITLE = "title of award";
+    }
+    else {
+        $TITLE = $certificate["title"];
+    }
+    if($certificate["header"] == null) {
+        $HEADER = "Certificate of Completion";
+    }
+    else {
+        $HEADER = $certificate["header"];
+    }
 } else {
     $issueName = "name";
     $details = "description of award";
@@ -111,6 +131,10 @@ $OUTPUT->bodyStart();
 if($USER->instructor) {
     if($USER->instructor && isset($_GET["mode"]) && $_GET["mode"] == "edit") {
     ?>
+        <form method='get'>
+            <button class='button'>Cancel</button>
+        </form>
+        <script src="scripts/ckeditor/ckeditor.js"></script>
         <form method='post'>
             <div class="certBack">
                 <br><br>
@@ -124,13 +148,17 @@ if($USER->instructor) {
                 <br><br>
                 <span class='title3edit2'>on <u>Date Awarded</u></span>
                 <br><br>
-                <textarea name='content' id='editor' class='ck-editor'>
-                    <p>Enter details here.</p>
+                <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
+                <textarea name="editor" id="editor" class="ck-editor">
+                    Enter details here
                 </textarea>
-
+                <script>
+                    CKEDITOR.replace( 'editor' );
+                </script>
                 <div>
                     <input type='text' name='issued_by' class="title4edit" id='issued_by' placeholder="<?= $issueName ?>">
-                </div>xx
+                </div>
+                <div class="logoEdit"></div>
             </div>
             <button type='submit' class='button'>Save</button>
         </form>
@@ -169,13 +197,13 @@ if($USER->instructor) {
                                </td>
                       </tr>');
 
-                ?>
-                </table>
-
-                </div>
-                <?php
             }
+            ?>
+            </table>
 
+            </div>
+
+            <?php
         }
     } else if($_SERVER['REQUEST_METHOD'] == 'GET') {
         ?>
@@ -191,20 +219,21 @@ if($USER->instructor) {
         <div class="certBack">
             <br><br>
             <br><br>
-            <div class="title1">Certificate of Completion</div>
+            <div class="title1"><?= $HEADER ?></div>
             <br><br>
-            <p class="title2"><u><?= $certificate["title"] ?></u></p>
+            <p class="title2"><?= $TITLE ?></p>
             <br><br>
             <p class="title3">Issued to: <u>Recipient Name</u></p>
             <br><br>
-            <p class="title32">on Date Awarded</p>
+            <p class="title32">on <u>Date Awarded</u></p>
             <div>
-                <p class="details"><?= $certificate["DETAILS"] ?></p>
+                <p class="details"><?= $details ?></p>
 
             </div>
             <div>
-                <p class="title4">Issued by: <u><?= $certificate["issued_by"] ?></u></p>
+                <p class="title4">Issued by: <?= $issueName ?></p>
             </div>
+            <div class="logo"></div>
         </div>
         <?php
     }
@@ -220,20 +249,21 @@ if($USER->instructor) {
     <div class="certBack">
         <br><br>
         <br><br>
-        <div class="title1">Certificate of Completion</div>
+        <div class="title1"><?= $HEADER ?></div>
         <br><br>
-        <p class="title2"><u><?= $certificate["title"] ?></u></p>
+        <p class="title2"><?= $TITLE ?></p>
         <br><br>
-        <span class="title3">Issued to <u><?= $name["displayname"] ?></u></span>
+        <span class="title3">Issued to <?= $name["displayname"] ?></span>
         <br><br>
-        <span class="title32">on <u><?= $awardId["date_awarded"] ?></u></span>
+        <span class="title32">on <?= $awardId["date_awarded"] ?></span>
         <div>
-            <p class="details"><?= $certificate["DETAILS"] ?></p>
+            <p class="details"><?= $details ?></p>
 
         </div>
         <div>
-            <p class="title4">Issued by <u><?= $certificate["issued_by"] ?></u></p>
+            <p class="title4">Issued by <?= $issueName ?></p>
         </div>
+    <div class="logo"></div>
     </div>
     <?php
 }
@@ -243,42 +273,29 @@ $OUTPUT->flashMessages();
 $OUTPUT->footerStart();
 
 ?>
-    <script src="scripts/ckeditor5-build-classic/ckeditor.js" type="text/javascript"></script>
     <script type="text/javascript">
-
-        $(document).ready(function() {
-            ClassicEditor
-                .create( document.querySelector('#editor'), {
-                    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]
-                })
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        });
 
 
         function printCert() {
             printView = window.open('','','width=1100, height=900');
-            printView.document.write("<div class=\"certBack\">\n"+
+            printView.document.write("<div class='certBack'>\n"+
 "        <br><br>\n"+
 "        <br><br>\n"+
+"        <div class='title1'><?= $HEADER ?></div>\n"+
 "        <br><br>\n"+
-"            <span class=\"title1\">Certificate of Completion</span>\n"+
-"            <br><br>\n"+
-"            <span class=\"title2\"><u><?= $certificate["title"] ?></u></span>\n"+
-"            <br><br>\n"+
-"            <span class=\"title3\">Issued to <u><?= $name["displayname"] ?></u></span>\n"+
+"        <p class='title2'><?= $TITLE ?></p>\n"+
+"        <br><br>\n"+
+"        <span class='title3'>Issued to <?= $name["displayname"] ?></span>\n"+
+"        <br><br>\n"+
+"        <span class='title32'>on <?= $awardId["date_awarded"] ?></span>\n"+
+"        <div>\n"+
+"            <p class='details'><?= $details ?></p>\n"+
 "\n"+
-"            <span class=\"title3\">on <?= $awardId["date_awarded"] ?></span>\n"+
-"            <br><br>\n"+
-"            <div>\n"+
-"                <span class=\"title3\"><?= $certificate["DETAILS"] ?></span>\n"+
-"                <br><br>\n"+
-"                <span class=\"title3\"\">Issued by <u><?= $certificate["issued_by"] ?></u></span>\n"+
-"            </div>\n"+
+"        </div>\n"+
+"        <div>\n"+
+"            <p class='title4'>Issued by <?= $issueName ?></p>\n"+
+"        </div>\n"+
+"    <div class='logo'></div>\n"+
 "    </div>");
 
             printView.document.close();
