@@ -149,12 +149,9 @@ if($USER->instructor) {
                 <span class='title3edit2'>on <u>Date Awarded</u></span>
                 <br><br>
                 <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
-                <textarea name="editor" id="editor" class="ck-editor">
+                <textarea name="DETAILS" id="DETAILS" class="editor">
                     Enter details here
                 </textarea>
-                <script>
-                    CKEDITOR.replace( 'editor' );
-                </script>
                 <div>
                     <input type='text' name='issued_by' class="title4edit" id='issued_by' placeholder="<?= $issueName ?>">
                 </div>
@@ -243,28 +240,33 @@ if($USER->instructor) {
     $name = $nameST->fetch(PDO::FETCH_ASSOC);
     ?>
 
-    <button class='button' onclick='printCert();'>
-        <span class='icon'>Print</span>
-    </button>
-    <div class="certBack">
-        <br><br>
-        <br><br>
-        <div class="title1"><?= $HEADER ?></div>
-        <br><br>
-        <p class="title2"><?= $TITLE ?></p>
-        <br><br>
-        <span class="title3">Issued to <?= $name["displayname"] ?></span>
-        <br><br>
-        <span class="title32">on <?= $awardId["date_awarded"] ?></span>
-        <div>
-            <p class="details"><?= $details ?></p>
+    <input type="button" value="Print" class="button" onclick="printCert()"/>
 
+    <div id="printArea">
+        <div class="certBack">
+            <img src="images/CertBack.jpg" class="certBack2">
+            <br><br>
+            <br><br>
+            <div class="title1"><?= $HEADER ?></div>
+            <br><br>
+            <p class="title2"><?= $TITLE ?></p>
+            <br><br>
+            <span class="title3">Issued to <?= $name["displayname"] ?></span>
+            <br><br>
+            <span class="title32">on <?= $awardId["date_awarded"] ?></span>
+            <div>
+                <p class="details"><?= $details ?></p>
+
+            </div>
+            <div>
+                <p class="title4">Issued by <?= $issueName ?></p>
+            </div>
+            <a>
+                <img src="images/square_UD_logo.png" class="logoPrint">
+            </a>
         </div>
-        <div>
-            <p class="title4">Issued by <?= $issueName ?></p>
-        </div>
-    <div class="logo"></div>
     </div>
+
     <?php
 }
 
@@ -275,33 +277,13 @@ $OUTPUT->footerStart();
 ?>
     <script type="text/javascript">
 
-
         function printCert() {
-            printView = window.open('','','width=1100, height=900');
-            printView.document.write("<div class='certBack'>\n"+
-"        <br><br>\n"+
-"        <br><br>\n"+
-"        <div class='title1'><?= $HEADER ?></div>\n"+
-"        <br><br>\n"+
-"        <p class='title2'><?= $TITLE ?></p>\n"+
-"        <br><br>\n"+
-"        <span class='title3'>Issued to <?= $name["displayname"] ?></span>\n"+
-"        <br><br>\n"+
-"        <span class='title32'>on <?= $awardId["date_awarded"] ?></span>\n"+
-"        <div>\n"+
-"            <p class='details'><?= $details ?></p>\n"+
-"\n"+
-"        </div>\n"+
-"        <div>\n"+
-"            <p class='title4'>Issued by <?= $issueName ?></p>\n"+
-"        </div>\n"+
-"    <div class='logo'></div>\n"+
-"    </div>");
-
+            var printPage = document.getElementById('printArea');
+            var printView = window.open('', '', 'width=1000, heigh=800');
+            printView.document.open();
+            printView.document.write(printPage.innerHTML);
+            printView.document.write('<html><link rel="stylesheet" href="printStyle.css" /></head><body onload="window.print()"></html>');
             printView.document.close();
-            printView.focus();
-            printView.print();
-            printView.close();
         }
     </script>
 <?php

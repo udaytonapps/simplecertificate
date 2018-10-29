@@ -1,8 +1,15 @@
 .certBack {
     height: 800px;
     width: 1000px;
-    background-image: url("images/CertBack.jpg");
+    background-image: url("images/CertBack.jpg") !important;
     background-size:1000px 800px;
+}
+
+.certBack2 {
+    height: 800px;
+    width: 1000px;
+    position: absolute;
+    -webkit-print-color-adjust: exact;
 }
 
 .title1 {
@@ -122,12 +129,12 @@
 
 .details {
     font-family: "URW Chancery L", cursive;
-    font-size:30px;
+    font-size:20px;
     text-align: center;
-    width:300px;
+    width:450px;
     word-wrap: break-spaces;
     position: absolute;
-    margin-left: 350px;
+    margin-left: 275px;
     margin-top: 225px;
 }
 
@@ -142,7 +149,7 @@
     background-color: #357ebd;
 }
 
-.ck-editor {
+.editor {
     width:300px;
     height:100px;
     position: center;
@@ -169,3 +176,14 @@
     margin-left: 390px;
     margin-top: 75px;
 }
+
+.logoPrint {
+    height: 100px;
+    width: 200px;
+    background-size:200px 100px;
+    position: absolute;
+    margin-left: 392px;
+    margin-top: 390px;
+}
+
+
