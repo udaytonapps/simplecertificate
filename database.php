@@ -15,6 +15,7 @@ $DATABASE_INSTALL = array(
     title         VARCHAR(255) NULL,
     header        VARCHAR(255) NULL,
     issued_by     VARCHAR(255) NULL,
+    department    VARCHAR(255) NULL,
     DETAILS       TEXT NULL,
     modified      datetime NOT NULL,
     

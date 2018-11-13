@@ -1,22 +1,56 @@
 .certBack {
+    height: 8.5in;
+    width: 11in;
+    background-image: url("images/certBack2.png") !important;
+    background-size:11in 8.5in;
+}
+
+.noCert {
+    position: absolute;
+    margin-left: 24.2vw;
+    height: 400px;
+    width: 500px;
+    background-color: #efefef;
+    background-size: 500px 400px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #aaaaaa;
+}
+
+.noPreview {
+    margin-top: 12vh;
+    position: absolute;
+    margin-left: 8.85vw;
+    color: #aaaaaa;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-spaces;
+    width: 300px;
+}
+
+.fields {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.box {
     height: 800px;
     width: 1000px;
-    background-image: url("images/CertBack.jpg") !important;
-    background-size:1000px 800px;
+    position: center;
+    margin-left: 2.5vw;
 }
 
 .certBack2 {
-    height: 800px;
-    width: 1000px;
+    height: 8.5in;
+    width: 11in;
     position: absolute;
     -webkit-print-color-adjust: exact;
 }
 
 .title1 {
-    font-family: "URW Chancery L", cursive;
     font-size:60px;
     font-weight:bold;
-    font-style: italic;
     text-align: center;
     position: absolute;
     margin-left: 215px;
@@ -25,117 +59,173 @@
 }
 
 .title1edit {
-    font-family: "URW Chancery L", cursive;
-    font-size: 45px;
-    font-weight:bold;
-    font-style: italic;
+    font-size: 42px;
+    font-weight: bold;
     text-align: center;
-    position: center;
-    margin-left: 225px;
-    margin-top: 25px;
-    width: 580px;
-    max-lines: 2;
+    position: absolute;
+    margin-left: 250px;
+    width: 600px;
+    max-height: 110px;
+    word-wrap: break-spaces;
 }
 
-.title2 {
-    font-family: "URW Chancery L", cursive;
-    font-size: 35px;
+.line2 {
     text-align: center;
-    vertical-align: center;
     position: absolute;
-    margin-top: 130px;
-    margin-left: 100px;
-    width: 800px;
+    font-size: 18px;
+    font-style: italic;
+    margin-left: 450px;
+    margin-top: 65px;
+}
+
+.line3 {
+    text-align: center;
+    position: absolute;
+    font-size: 18px;
+    font-style: italic;
+    margin-left: 470px;
+    margin-top: 140px;
+}
+
+.line4 {
+    text-align: center;
+    position: absolute;
+    font-size: 18px;
+    font-style: italic;
+    margin-left: 517px;
+    margin-top: 240px;
+}
+
+.line5 {
+    font-size:15px;
+    font-style: italic;
+    text-align: center;
+    position: absolute;
+    margin-left: 688px;
+    margin-top: 485px;
+    width:250px;
     word-wrap: break-spaces;
-    max-lines: 2;
+}
+.line6 {
+    font-size:12px;
+    font-style: italic;
+    text-align: center;
+    position: absolute;
+    margin-left: 675px;
+    margin-top: 532px;
+    width:250px;
 }
 
 .title2edit {
-    font-family: "URW Chancery L", cursive;
-    font-size: 30px;
+    color: #0B1074;
+    font-size: 25px;
+    font-weight: bold;
     text-align: center;
-    position: center;
-    margin-left: 275px;
+    position: absolute;
     width: 450px;
     word-wrap: break-spaces;
-    max-lines: 2;
+    margin-left: 305px;
+    margin-top: 190px;
 }
 
 .title3 {
-    width: 400px;
-    font-family: "URW Chancery L", cursive;
-    font-size:35px;
+    font-size:30px;
     font-weight: bold;
     text-align: center;
     position: absolute;
     word-wrap: break-spaces;
-    margin-top: 195px;
-    margin-left: 300px;
+    margin-left: 445px;
+    margin-top: 70px;
 
 }
 
 .title32 {
-    font-family: "URW Chancery L", cursive;
-    font-size:30px;
-    text-align: center;
-    position: absolute;
-    word-wrap: break-spaces;
-    margin-top: 360px;
-    margin-left: 170px;
-}
-
-.title3edit {
-    font-family: "URW Chancery L", cursive;
-    font-size:35px;
+    font-size:20px;
     font-weight: bold;
     text-align: center;
     position: absolute;
-    margin-top: 60px;
     word-wrap: break-spaces;
-    margin-left: 350px;
+    margin-top: 285px;
+    margin-left: 438px;
+}
+
+.title3edit {
+    font-size:30px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    word-wrap: break-spaces;
+    margin-left: 418px;
+    margin-top: 70px;
 }
 
 .title3edit2 {
-    font-family: "URW Chancery L", cursive;
-    font-size:30px;
+    font-size:20px;
+    font-weight: bold;
     text-align: center;
     position: absolute;
     word-wrap: break-spaces;
-    margin-top: 225px;
-    margin-left: 180px;
+    margin-top: 285px;
+    margin-left: 462px;
 }
 
-.title4 {
-    font-family: "URW Chancery L", cursive;
-    font-size:30px;
+
+.title4edit {
+    font-size:20px;
+    font-style: italic;
     text-align: center;
     position: absolute;
-    margin-left: 560px;
-    margin-top: 360px;
+    margin-left: 685px;
+    margin-top: 515px;
     width:250px;
     word-wrap: break-spaces;
 }
 
-.title4edit {
-    font-family: "URW Chancery L", cursive;
-    font-size:30px;
+.deptEdit {
+    font-size:12px;
+    font-style: italic;
     text-align: center;
     position: absolute;
-    margin-left: 565px;
-    margin-top: 20px;
+    margin-left: 685px;
+    margin-top: 550px;
     width:250px;
     word-wrap: break-spaces;
 }
 
 .details {
-    font-family: "URW Chancery L", cursive;
-    font-size:20px;
-    text-align: center;
-    width:450px;
+    color: #666666;
+    font-size:14px;
+    width:500px;
+    height:75px;
+    margin-bottom: 5px;
+    margin-left: 0.2vw;
+    background-color: #efefef;
+    border: solid 1px #cccccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    resize: none;
+}
+
+.detailsEdit {
+    font-size:14px;
+    width:250px;
     word-wrap: break-spaces;
     position: absolute;
-    margin-left: 275px;
-    margin-top: 225px;
+    margin-left: 75px;
+    margin-top: 475px;
+    margin-bottom: 5px;
+}
+
+.detailsHead {
+    font-size:14px;
+    font-weight: bold;
+    width:250px;
+    word-wrap: break-spaces;
+    position: absolute;
+    margin-left: 75px;
+    margin-top: 450px;
+    margin-bottom: 5px;
 }
 
 #outer {
@@ -143,47 +233,40 @@
     width: 250px
 }
 
-.table {
-    width: 500px;
-    border-color: #dc3545;
-    background-color: #357ebd;
+.table-hover {
+    background-color: #efefef;
 }
 
-.editor {
-    width:300px;
-    height:100px;
-    position: center;
-    margin-left: 350px;
-    margin-top: 60px;
+.instructions {
+    font-size: 16px;
+    word-wrap: break-spaces;
+    max-width: 750px;
 }
 
-.logo {
-    height: 100px;
-    width: 200px;
-    background-image: url("images/square_UD_logo.png");
-    background-size:200px 100px;
-    position: absolute;
-    margin-left: 392px;
-    margin-top: 390px;
+.form-control {
+    min-width: 500px;
+    margin-bottom: 5px;
+    background-color: #efefef;
 }
 
-.logoEdit {
-    height: 100px;
-    width: 200px;
-    background-image: url("images/square_UD_logo.png");
-    background-size:200px 100px;
-    position: absolute;
-    margin-left: 390px;
-    margin-top: 75px;
+.lineBreak {
+    font-weight: bold;
+    color: #aaaaaa;
+    margin-left: 2.5vw;
 }
 
-.logoPrint {
-    height: 100px;
-    width: 200px;
-    background-size:200px 100px;
-    position: absolute;
-    margin-left: 392px;
-    margin-top: 390px;
+.lineBreak2 {
+    font-weight: bold;
+    color: #aaaaaa;
 }
 
+.preview {
+    margin-left: 43.75vw;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+}
 
+.printButton {
+    margin-left: 1vw;
+}
