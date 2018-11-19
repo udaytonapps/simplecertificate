@@ -7,6 +7,7 @@ $p = $CFG->dbprefix;
 
 $LAUNCH = LTIX::requireData();
 
+
 $currentTime = new DateTime('now', new DateTimeZone($CFG->timezone));
 $currentTime = $currentTime->format("Y-m-d H:i:s");
 
@@ -15,7 +16,7 @@ $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
 
 $issueName = !$certificate || $certificate["issued_by"] == null ? "ex: 'Robert Hooke'" : $certificate["issued_by"];
-$titleDis = !$certificate || $certificate["title"] == null ? "ex: 'Module 1'" : $certificate["title"];
+$titleDis = !$certificate || $certificate["title"] == null ? "ex: 'Module on Hooke's Law'" : $certificate["title"];
 $headerDis = !$certificate || $certificate["header"] == null ? "ex: 'Certificate of Completion'" : $certificate["header"];
 $deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
 
@@ -98,65 +99,109 @@ if($USER->instructor) {
     $OUTPUT->flashMessages();
     ?>
         <div class="container">
-            <p class="fields">Certificate Fields</p>
             <form method="post" class="form-inline">
+                <div class="container">
+                    <div class="col-sm-3">
+                        <p class="fields">Certificate Fields</p>
+                    </div>
+                    <div class="col-sm-9"></div>
+                </div>
     <?php
     if(!$certificate) {
         ?>
-        <div class="form-group">
-            <label style="font-weight: normal" for="header">Title of Certificate:</label>
-            <input style="margin-left: 4.35vw" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="header">Title of Certificate:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="30" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="title">Title of Achievement:</label>
-            <input style="margin-left: 2.752vw" class="form-control" id="title" name="title" placeholder="<?= $titleDis ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="title">Title of Achievement:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="50" class="form-control" id="title" name="title" placeholder="<?= $titleDis ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
-            <input style="margin-left: 4.05vw" class="form-control" id="issued_by" name="issued_by" placeholder="<?= $issueName ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="40" class="form-control" id="issued_by" name="issued_by" placeholder="<?= $issueName ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
-            <input style="margin-left: 0.5vw" class="form-control" id="department" name="department" placeholder="<?= $deptDis ?>">
-            <label style="font-weight: normal" for="department">(Optional)</label>
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
+            </div>
+            <div class="col-sm-8">
+                <input maxlength="80" class="form-control" id="department" name="department" placeholder="ex: 'Department of Mechanical Engineering">
+                <label style="font-weight: normal" for="department">(Optional)</label>
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="details">Certificate Requirements:</label>
-            <textarea class="details" id="DETAILS" name="DETAILS"></textarea>
-            <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="details">Certificate Requirements:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea maxlength="240" class="details" id="DETAILS" name="DETAILS"><?= $certificate['DETAILS'] ?></textarea>
+                <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+            </div>
         </div>
         <?php
         } else {
         ?>
-        <div class="form-group">
-            <label style="font-weight: normal" for="header">Title of Certificate:</label>
-            <input style="margin-left: 4.35vw" class="form-control" id="header" name="header" value="<?= $headerDis ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="header">Title of Certificate:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="30"class="form-control" id="header" name="header" value="<?= $headerDis ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="title">Title of Achievement:</label>
-            <input style="margin-left: 2.752vw" class="form-control" id="title" name="title" value="<?= $titleDis ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="title">Title of Achievement:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="50" class="form-control" id="title" name="title" value="<?= $titleDis ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
-            <input style="margin-left: 4.05vw" class="form-control" id="issued_by" name="issued_by" value="<?= $issueName ?>">
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
+            </div>
+            <div class="col-sm-9">
+                <input maxlength="40" class="form-control" id="issued_by" name="issued_by" value="<?= $issueName ?>">
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
-            <input style="margin-left: 0.5vw" class="form-control" id="department" name="department" value="<?= $certificate["department"] ?>">
-            <label style="font-weight: normal" for="department">(Optional)</label>
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
+            </div>
+            <div class="col-sm-8">
+                <input maxlength="80" class="form-control" id="department" name="department" value="<?= $certificate["department"] ?>">
+                <label style="font-weight: normal" for="department">(Optional)</label>
+            </div>
         </div>
-        <div class="form-group">
-            <label style="font-weight: normal" for="details">Certificate Requirements:</label>
-            <textarea class="details" id="DETAILS" name="DETAILS"><?= $certificate['DETAILS'] ?></textarea>
-            <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+        <div class="container">
+            <div class="col-sm-3">
+                <label style="font-weight: normal" for="details">Certificate Requirements:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea maxlength="240" class="details" id="DETAILS" name="DETAILS"><?= $certificate['DETAILS'] ?></textarea>
+                <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+            </div>
         </div>
         <?php
         }
         ?>
                 <br><br>
-                <p class="lineBreak2">_____________________________________________________________________________________________________________________________</p>
                 <p style="font-style: italic">* Date and Time of Completion will automatically be added to the certificate</p>
-                <p class="lineBreak2">_____________________________________________________________________________________________________________________________</p>
+                <br>
         <?php
         if(!$certificate) {
             ?>
@@ -195,7 +240,7 @@ if($USER->instructor) {
 
                     <p class="line5">Issued by</p>
                     <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">________________________________________</p>
+                    <p class="line6">__________________________________________________</p>
                     <p class="deptEdit"><?= $deptDis ?></p>
                 </div>
                 <?php
@@ -205,7 +250,7 @@ if($USER->instructor) {
                 <div class="certBack">
                     <br><br>
                     <br><br>
-                    <div class="title1edit"><?= $headerDis ?></div>
+                    <div id="resize" class="title1edit"><?= $headerDis ?></div>
                     <br><br>
                     <p class="line2">This is to certify that</p>
 
@@ -216,11 +261,11 @@ if($USER->instructor) {
                     <p class="line4">on</p>
                     <p class="title3edit2">Date Awarded</p>
                     <p class="detailsHead">Certificate Requirements:</p>
-                    <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
+                    <p id="resize" class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
 
                     <p class="line5">Issued by</p>
                     <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">________________________________________</p>
+                    <p class="line6">__________________________________________________</p>
                     <p class="deptEdit"><?= $deptDis ?></p>
                 </div>
                 <?php
@@ -243,19 +288,5 @@ if($USER->instructor) {
 }
 
 $OUTPUT->footerStart();
-
-?>
-    <script type="text/javascript">
-
-        function printCert() {
-            var printPage = document.getElementById('printArea');
-            var printView = window.open('', '', 'width=1000, height=800');
-            printView.document.open();
-            printView.document.write(printPage.innerHTML);
-            printView.document.write('<html><link rel="stylesheet" href="printStyle.css" /></head><body onload="window.print()"></html>');
-            printView.document.close();
-        }
-    </script>
-<?php
 
 $OUTPUT->footerEnd();

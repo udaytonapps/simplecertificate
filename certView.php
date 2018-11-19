@@ -7,9 +7,6 @@ $p = $CFG->dbprefix;
 
 $LAUNCH = LTIX::requireData();
 
-$currentTime = new DateTime('now', new DateTimeZone($CFG->timezone));
-$currentTime = $currentTime->format("m-d-Y H:i:s");
-
 $certificateST  = $PDOX->prepare("SELECT * FROM {$p}certificate WHERE link_id = :linkId");
 $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
@@ -27,6 +24,9 @@ if($certificate) {
     $nameST = $PDOX->prepare("SELECT displayname FROM {$p}lti_user WHERE user_id = :user_id");
     $nameST->execute(array(":user_id" => $award["user_id"]));
     $name = $nameST->fetch(PDO::FETCH_ASSOC);
+
+    $currentTime = $award['date_awarded'];
+    $currentTime = date('F j, Y', strtotime($currentTime));
 }
 
 $OUTPUT->header();
@@ -57,7 +57,7 @@ if(!$USER->instructor) {
                     <p class="line3">has completed</p>
                     <p class="title2edit"><?= $titleDis ?></p>
                     <p class="line4">on</p>
-                    <p class="title32"><?= $award["date_awarded"] ?></p>
+                    <p class="title32"><?= $currentTime ?></p>
                     <p class="line5">Issued by</p>
                     <p class="title4edit"><?= $issueName ?></p>
                     <p class="line6">________________________________________</p>
@@ -84,7 +84,7 @@ if(!$USER->instructor) {
                     <p class="line3">has completed</p>
                     <p class="title2edit"><?= $titleDis ?></p>
                     <p class="line4">on</p>
-                    <p class="title32"><?= $award["date_awarded"] ?></p>
+                    <p class="title32"><?= $currentTime ?></p>
                     <p class="detailsHead">Certificate Requirements:</p>
                     <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
                     <p class="line5">Issued by</p>
@@ -109,7 +109,7 @@ $OUTPUT->footerStart();
             var printView = window.open('', '', 'width=1100, height=850');
             printView.document.open();
             printView.document.write(printPage.innerHTML);
-            printView.document.write('<html><link rel="stylesheet" href="printStyle.css" /></head><body onload="window.print()"></html>');
+            printView.document.write('<html><link rel="stylesheet" href="printStyle.css" /></head><body onload="window.print()"></html><style type="text/css" media="print">@page { size: landscape; }</style>');
             printView.document.close();
         }
     </script>

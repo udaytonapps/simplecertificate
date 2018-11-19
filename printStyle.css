@@ -1,4 +1,6 @@
 @media {
+    @page { size: auto;
+            margin: 0; }
 
     .certBack2 {
         height: 8.5in;
@@ -13,9 +15,9 @@
         font-weight: bold;
         text-align: center;
         position: absolute;
-        margin-top: 1.2vh;
-        margin-left: 23vw;
-        width: 600px;
+        margin-top: 10px;
+        margin-left: 238px;
+        width: 585px;
         max-height: 110px;
         word-wrap: break-spaces;
     }
@@ -26,8 +28,8 @@
         position: absolute;
         font-size: 18px;
         font-style: italic;
-        margin-left: 41.4vw;
-        margin-top: 9vh;
+        margin-left: 450px;
+        margin-top: 75px;
     }
 
     .line3 {
@@ -36,8 +38,8 @@
         position: absolute;
         font-size: 18px;
         font-style: italic;
-        margin-left: 43vw;
-        margin-top: 17.4vh;
+        margin-left: 471px;
+        margin-top: 150px;
     }
 
     .line4 {
@@ -46,8 +48,8 @@
         position: absolute;
         font-size: 18px;
         font-style: italic;
-        margin-left: 47.25vw;
-        margin-top: 28.6vh;
+        margin-left: 520px;
+        margin-top: 250px;
     }
 
     .line5 {
@@ -56,9 +58,9 @@
         font-style: italic;
         text-align: center;
         position: absolute;
-        margin-left: 62.1vw;
-        margin-top: 58vh;
-        width:250px;
+        margin-left: 625px;
+        margin-top: 500px;
+        width:400px;
         word-wrap: break-spaces;
     }
     .line6 {
@@ -67,9 +69,9 @@
         font-style: italic;
         text-align: center;
         position: absolute;
-        margin-left: 60.8vw;
-        margin-top: 63vh;
-        width:250px;
+        margin-left: 625px;
+        margin-top: 542px;
+        width:400px;
     }
 
     .title2edit {
@@ -79,10 +81,9 @@
         font-weight: bold;
         text-align: center;
         position: absolute;
-        width: 450px;
-        word-wrap: break-spaces;
-        margin-left: 28.2vw;
-        margin-top: 23.8vh;
+        margin-left: 236px;
+        width: 595px;
+        margin-top: 200px;
     }
 
     .title3 {
@@ -92,9 +93,9 @@
         text-align: center;
         position: absolute;
         word-wrap: break-spaces;
-        margin-left: 40.75vw;
-        margin-top: 10vh;
-
+        width: 550px;
+        margin-left: 255px;
+        margin-top: 80px;
     }
 
     .title32 {
@@ -104,8 +105,9 @@
         text-align: center;
         position: absolute;
         word-wrap: break-spaces;
-        margin-top: 291.5px;
-        margin-left: 40vw;
+        width: 250px;
+        margin-top: 295px;
+        margin-left: 405px;
     }
 
     .title3edit {
@@ -114,9 +116,9 @@
         font-weight: bold;
         text-align: center;
         position: absolute;
-        word-wrap: break-spaces;
-        margin-left: 419px;
-        margin-top: 70px;
+        margin-left: 240px;
+        width: 580px;
+        margin-top: 80px;
     }
 
     .title3edit2 {
@@ -126,8 +128,9 @@
         text-align: center;
         position: absolute;
         word-wrap: break-spaces;
-        margin-top: 285px;
-        margin-left: 463px;
+        margin-top: 295px;
+        width: 575px;
+        margin-left: 243px;
     }
 
 
@@ -137,9 +140,9 @@
         font-style: italic;
         text-align: center;
         position: absolute;
-        margin-left: 62vw;
-        margin-top: 61vh;
-        width:250px;
+        margin-left: 625px;
+        margin-top: 525px;
+        width:400px;
         word-wrap: break-spaces;
     }
 
@@ -149,9 +152,9 @@
         font-style: italic;
         text-align: center;
         position: absolute;
-        margin-left: 62vw;
-        margin-top: 65.5vh;
-        width:250px;
+        margin-left: 675px;
+        margin-top: 560px;
+        width:300px;
         word-wrap: break-spaces;
     }
 
@@ -161,8 +164,9 @@
         width:250px;
         word-wrap: break-spaces;
         position: absolute;
-        margin-left: 7.6vw;
-        margin-top: 56.8vh;
+        margin-left: 75px;
+        margin-top: 485px;
+        margin-bottom: 5px;
     }
 
     .detailsHead {
@@ -172,8 +176,9 @@
         width:250px;
         word-wrap: break-spaces;
         position: absolute;
-        margin-left: 7.6vw;
-        margin-top: 54.2vh;
+        margin-left: 75px;
+        margin-top: 460px;
+        margin-bottom: 5px;
     }
 
     @page {

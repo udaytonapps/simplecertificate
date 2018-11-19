@@ -26,6 +26,13 @@ $userList = $userSt->fetchAll(PDO::FETCH_ASSOC);
 $OUTPUT->header();
 ?>
     <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script>
+        function alertWin()
+        {
+            alert("List cleared successfully.");
+        }
+    </script>
 <?php
 $OUTPUT->bodyStart();
 
@@ -38,7 +45,7 @@ if($USER->instructor) {
     } else {
         ?>
         <a href="index.php" class="btn btn-primary pull-left"><span class="fa fa-reply" aria-hidden="true"></span> Back</a>
-        <a style="margin-left: 5px; margin-bottom: 10px" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
+        <a style="margin-left: 5px; margin-bottom: 10px" onclick="alertWin()" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
         <div class="container">
             <table class="table table-hover">
                 <tr>
@@ -49,6 +56,7 @@ if($USER->instructor) {
                 foreach ($userList as $student) {
                     $userID = $student['user_id'];
                     $certDate = $student['date_awarded'];
+                    $certDate = date('F j, Y H:i a', strtotime($certDate));
                     $userName = findDisplayName($userID, $PDOX, $p);
 
                     echo('<tr>
