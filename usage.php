@@ -48,12 +48,13 @@ if($USER->instructor) {
         <a onclick="alertWin()" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
         <div class="container">
             <table class="table table-hover">
-                <thead></thead>
-                <tbody>
+                <thead>
                 <tr>
                     <th>Student Name</th>
                     <th>Date</th>
                 </tr>
+                </thead>
+                <tbody>x
                 <?php
                 foreach ($userList as $student) {
                     $userID = $student['user_id'];
