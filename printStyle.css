@@ -140,10 +140,15 @@
         font-style: italic;
         text-align: center;
         position: absolute;
-        margin-left: 625px;
+        margin-left: 645px;
         margin-top: 525px;
-        width:400px;
+        width:360px;
         word-wrap: break-spaces;
+        border-width: 1px;
+        border-style: inset;
+        border-top: black;
+        border-left: black;
+        border-right: black;
     }
 
     .deptEdit {

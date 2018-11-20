@@ -45,9 +45,11 @@ if($USER->instructor) {
     } else {
         ?>
         <a href="index.php" class="btn btn-primary pull-left"><span class="fa fa-reply" aria-hidden="true"></span> Back</a>
-        <a style="margin-left: 5px; margin-bottom: 10px" onclick="alertWin()" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
+        <a onclick="alertWin()" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
         <div class="container">
             <table class="table table-hover">
+                <thead></thead>
+                <tbody>
                 <tr>
                     <th>Student Name</th>
                     <th>Date</th>
@@ -69,6 +71,7 @@ if($USER->instructor) {
                       </tr>');
                 }
                 ?>
+                </tbody>
             </table>
         </div>
         <?php

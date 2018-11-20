@@ -41,7 +41,6 @@ if(!$USER->instructor) {
         <h1>No certificate exists.</h1>
         <?php
     } else {
-        if($certificate["DETAILS"]=="                    " || $certificate["DETAILS"]==null) {
             ?>
             <input type="button" value="Print" class="button" onclick="printCert()"/>
             <div id="printArea">
@@ -58,44 +57,20 @@ if(!$USER->instructor) {
                     <p class="title2edit"><?= $titleDis ?></p>
                     <p class="line4">on</p>
                     <p class="title32"><?= $currentTime ?></p>
+                    <?php
+                    if($certificate["DETAILS"]==" ") {
+                        ?>
+                        <p class="detailsHead">Certificate Requirements:</p>
+                        <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
+                        <?php
+                    }
+                    ?>
                     <p class="line5">Issued by</p>
                     <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">________________________________________</p>
                     <p class="deptEdit"><?= $deptDis ?></p>
                 </div>
             </div>
             <?php
-        }
-        else {
-            ?>
-            <div class="printButton">
-                <input type="button" value="Print" class="btn btn-success" onclick="printCert()"/>
-            </div>
-            <div class="certBack" id="printArea">
-                <div>
-                    <img src="images/certBack2.png" class="certBack2">
-                    <br><br>
-                    <br><br>
-                    <div class="title1edit"><?= $headerDis ?></div>
-                    <br><br>
-                    <p class="line2">This is to certify that</p>
-                    <br><br>
-                    <p class="title3"><u><?= $name["displayname"] ?></u></p>
-                    <p class="line3">has completed</p>
-                    <p class="title2edit"><?= $titleDis ?></p>
-                    <p class="line4">on</p>
-                    <p class="title32"><?= $currentTime ?></p>
-                    <p class="detailsHead">Certificate Requirements:</p>
-                    <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
-                    <p class="line5">Issued by</p>
-                    <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">________________________________________</p>
-                    <p class="deptEdit"><?= $deptDis ?></p>
-                </div>
-            </div>
-            <?php
-        }
-
     }
 }
 

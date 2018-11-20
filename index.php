@@ -89,7 +89,7 @@ if($USER->instructor) {
         <div>
             <a href="usage.php" class="btn btn-primary pull-right"><span class="fa fa-eye"
                                                                          aria-hidden="true"></span> Certificates Earned</a>
-            <h1 style="font-weight: bold; font-size: 30px;">Simple Certificate Tool</h1>
+            <h1 class="header">Simple Certificate Tool</h1>
             <p class="instructions">Fill out fields below to create your certificate. You'll be able to see a
                 preview of how the certificate will look when filled out at the bottom of the page. You can also track
                 those that have earned the certificate under the 'Certificates Earned' button.</p>
@@ -111,15 +111,15 @@ if($USER->instructor) {
         ?>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="header">Title of Certificate:</label>
+                <label class="inputs" for="header">Title of Certificate:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="30" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
+                <input maxlength="29" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
             </div>
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="title">Title of Achievement:</label>
+                <label class="inputs" for="title">Title of Achievement:</label>
             </div>
             <div class="col-sm-9">
                 <input maxlength="50" class="form-control" id="title" name="title" placeholder="<?= $titleDis ?>">
@@ -127,7 +127,7 @@ if($USER->instructor) {
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
+                <label class="inputs" for="issued_by">Awards Issued By:</label>
             </div>
             <div class="col-sm-9">
                 <input maxlength="40" class="form-control" id="issued_by" name="issued_by" placeholder="<?= $issueName ?>">
@@ -135,20 +135,20 @@ if($USER->instructor) {
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
+                <label class="inputs" for="issueDep">Issuing Department/Unit:</label>
             </div>
             <div class="col-sm-8">
                 <input maxlength="80" class="form-control" id="department" name="department" placeholder="ex: 'Department of Mechanical Engineering">
-                <label style="font-weight: normal" for="department">(Optional)</label>
+                <label class="inputs" for="department">(Optional)</label>
             </div>
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="details">Certificate Requirements:</label>
+                <label class="inputs" for="details">Certificate Requirements:</label>
             </div>
             <div class="col-sm-8">
                 <textarea maxlength="240" class="details" id="DETAILS" name="DETAILS"><?= $certificate['DETAILS'] ?></textarea>
-                <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+                <label class="inputs" for="DETAILS">(Optional)</label>
             </div>
         </div>
         <?php
@@ -156,15 +156,15 @@ if($USER->instructor) {
         ?>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="header">Title of Certificate:</label>
+                <label class="inputs" for="header">Title of Certificate:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="30"class="form-control" id="header" name="header" value="<?= $headerDis ?>">
+                <input maxlength="29" class="form-control" id="header" name="header" value="<?= $headerDis ?>">
             </div>
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="title">Title of Achievement:</label>
+                <label class="inputs" for="title">Title of Achievement:</label>
             </div>
             <div class="col-sm-9">
                 <input maxlength="50" class="form-control" id="title" name="title" value="<?= $titleDis ?>">
@@ -172,7 +172,7 @@ if($USER->instructor) {
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="issued_by">Awards Issued By:</label>
+                <label class="inputs" for="issued_by">Awards Issued By:</label>
             </div>
             <div class="col-sm-9">
                 <input maxlength="40" class="form-control" id="issued_by" name="issued_by" value="<?= $issueName ?>">
@@ -180,28 +180,26 @@ if($USER->instructor) {
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="issueDep">Issuing Department/Unit:</label>
+                <label class="inputs" for="issueDep">Issuing Department/Unit:</label>
             </div>
             <div class="col-sm-8">
                 <input maxlength="80" class="form-control" id="department" name="department" value="<?= $certificate["department"] ?>">
-                <label style="font-weight: normal" for="department">(Optional)</label>
+                <label class="inputs" for="department">(Optional)</label>
             </div>
         </div>
         <div class="container">
             <div class="col-sm-3">
-                <label style="font-weight: normal" for="details">Certificate Requirements:</label>
+                <label class="inputs" for="details">Certificate Requirements:</label>
             </div>
             <div class="col-sm-8">
                 <textarea maxlength="240" class="details" id="DETAILS" name="DETAILS"><?= $certificate['DETAILS'] ?></textarea>
-                <label style="font-weight: normal" for="DETAILS">(Optional)</label>
+                <label class="inputs" for="DETAILS">(Optional)</label>
             </div>
         </div>
         <?php
         }
         ?>
-                <br><br>
-                <p style="font-style: italic">* Date and Time of Completion will automatically be added to the certificate</p>
-                <br>
+                <p class="breakText">* Date and Time of Completion will automatically be added to the certificate</p>
         <?php
         if(!$certificate) {
             ?>
@@ -216,36 +214,10 @@ if($USER->instructor) {
 
             </form>
         </div>
-    <br><br>
-    <br><br>
-    <p class="lineBreak">_____________________________________________________________________________________________________________________________</p>
+    <hr class="hr">
     <p class="preview">Preview</p>
         <?php
         if($certificate) {
-            if($certificate["DETAILS"]==null) {
-                ?>
-                <div class="certBack">
-                    <br><br>
-                    <br><br>
-                    <div class="title1edit"><?= $headerDis ?></div>
-                    <br><br>
-                    <p class="line2">This is to certify that</p>
-
-                    <br><br>
-                    <p class="title3edit"><u>Recipient Name</u></p>
-                    <p class="line3">has completed</p>
-                    <p class="title2edit"><?= $titleDis ?></p>
-                    <p class="line4">on</p>
-                    <p class="title3edit2">Date Awarded</p>
-
-                    <p class="line5">Issued by</p>
-                    <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">__________________________________________________</p>
-                    <p class="deptEdit"><?= $deptDis ?></p>
-                </div>
-                <?php
-            }
-            else {
                 ?>
                 <div class="certBack">
                     <br><br>
@@ -260,16 +232,20 @@ if($USER->instructor) {
                     <p class="title2edit"><?= $titleDis ?></p>
                     <p class="line4">on</p>
                     <p class="title3edit2">Date Awarded</p>
-                    <p class="detailsHead">Certificate Requirements:</p>
-                    <p id="resize" class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
+                    <?php
+                    if($certificate["DETAILS"]==" ") {
+                        ?>
+                        <p class="detailsHead">Certificate Requirements:</p>
+                        <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
+                        <?php
+                    }
+                    ?>
 
                     <p class="line5">Issued by</p>
                     <p class="title4edit"><?= $issueName ?></p>
-                    <p class="line6">__________________________________________________</p>
                     <p class="deptEdit"><?= $deptDis ?></p>
                 </div>
                 <?php
-            }
         }
         else {
             ?>
