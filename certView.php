@@ -11,10 +11,10 @@ $certificateST  = $PDOX->prepare("SELECT * FROM {$p}certificate WHERE link_id = 
 $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
 
-$issueName = !$certificate || $certificate["issued_by"] == null ? "name" : $certificate["issued_by"];
-$titleDis = !$certificate || $certificate["title"] == null ? "title of award" : $certificate["title"];
-$headerDis = !$certificate || $certificate["header"] == null ? "Certificate of Completion" : $certificate["header"];
-$deptDis = !$certificate || $certificate["department"] == null ? "University of Dayton" : $certificate["department"];
+$issueName = !$certificate || $certificate["issued_by"] == null ? "ex: Robert Hooke" : $certificate["issued_by"];
+$titleDis = !$certificate || $certificate["title"] == null ? "ex: Module on Hooke's Law" : $certificate["title"];
+$headerDis = !$certificate || $certificate["header"] == null ? "ex: Certificate of Completion" : $certificate["header"];
+$deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
 
 if($certificate) {
     $awardSt = $PDOX->prepare("SELECT * FROM {$p}cert_award WHERE cert_id = :certId AND user_id = :userId");
@@ -42,7 +42,10 @@ if(!$USER->instructor) {
         <?php
     } else {
             ?>
-            <input type="button" value="Print" class="button" onclick="printCert()"/>
+            <div class="container-fluid">
+                <h1 class="compCerts">Congratulations! You have earned the following certificate.</h1>
+                <input type="button" value="Print Certificate" class="button" onclick="printCert()"/>
+            </div>
             <div id="printArea">
                 <div class="certBack">
                     <img src="images/certBack2.png" class="certBack2">
@@ -58,7 +61,7 @@ if(!$USER->instructor) {
                     <p class="line4">on</p>
                     <p class="title32"><?= $currentTime ?></p>
                     <?php
-                    if($certificate["DETAILS"]==" ") {
+                    if(!$certificate["DETAILS"]=="") {
                         ?>
                         <p class="detailsHead">Certificate Requirements:</p>
                         <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>

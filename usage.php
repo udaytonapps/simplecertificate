@@ -28,25 +28,38 @@ $OUTPUT->header();
     <link rel="stylesheet" type="text/css" href="main.css">
 
     <script>
-        function alertWin()
-        {
-            alert("List cleared successfully.");
+        function confirmResetTool() {
+            return confirm("Are you sure that you want to clear all earned certificates? This cannot be undone.");
         }
     </script>
 <?php
 $OUTPUT->bodyStart();
 
 if($USER->instructor) {
+    ?>
+    <ol class="breadcrumb">
+        <li><a href="index.php">Certificate Admin</a></li>
+        <li class="active">Certificates Earned</li>
+    </ol>
+    <?php
     if (!$userList) {
         ?>
-        <h1>No students have received a certificate</h1>
-        <a href="index.php" class="btn btn-primary pull-left"><span aria-hidden="true"></span> Back</a>
+        <div class="container">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <img class="noCertPic" src="images/undraw_community_8nwl.svg">
+            </div>
+            <div class="col-sm-7">
+                <h1 class="text-muted">No certificates have been earned.</h1>
+            </div>
+            
+        </div>
         <?php
     } else {
         ?>
-        <a href="index.php" class="btn btn-primary pull-left"><span class="fa fa-reply" aria-hidden="true"></span> Back</a>
-        <a onclick="alertWin()" href="clearList.php" class="btn btn-success pull-left"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
         <div class="container">
+            <a href="clearList.php" onclick="return confirmResetTool();" class="btn btn-success pull-right"><span class="fa fa-trash" aria-hidden="true"></span> Clear Results</a>
+            <h1 class="compCerts">Completed Certificates</h1>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -54,12 +67,12 @@ if($USER->instructor) {
                     <th>Date</th>
                 </tr>
                 </thead>
-                <tbody>x
+                <tbody>
                 <?php
                 foreach ($userList as $student) {
                     $userID = $student['user_id'];
                     $certDate = $student['date_awarded'];
-                    $certDate = date('F j, Y H:i a', strtotime($certDate));
+                    $certDate = date('F j, Y h:i a', strtotime($certDate));
                     $userName = findDisplayName($userID, $PDOX, $p);
 
                     echo('<tr>
