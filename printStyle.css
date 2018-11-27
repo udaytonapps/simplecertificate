@@ -3,7 +3,7 @@
             margin: 0; }
 
     .certBack2 {
-        height: 8.5in;
+        height: 7.9in;
         width: 11in;
         position: absolute;
         -webkit-print-color-adjust: exact;
@@ -59,7 +59,7 @@
         text-align: center;
         position: absolute;
         margin-left: 625px;
-        margin-top: 500px;
+        margin-top: 460px;
         width:400px;
         word-wrap: break-spaces;
     }
@@ -70,7 +70,7 @@
         text-align: center;
         position: absolute;
         margin-left: 625px;
-        margin-top: 542px;
+        margin-top: 502px;
         width:400px;
     }
 
@@ -141,7 +141,7 @@
         text-align: center;
         position: absolute;
         margin-left: 645px;
-        margin-top: 525px;
+        margin-top: 485px;
         width:360px;
         word-wrap: break-spaces;
         border-width: 1px;
@@ -158,7 +158,7 @@
         text-align: center;
         position: absolute;
         margin-left: 675px;
-        margin-top: 560px;
+        margin-top: 520px;
         width:300px;
         word-wrap: break-spaces;
     }
@@ -170,7 +170,7 @@
         word-wrap: break-spaces;
         position: absolute;
         margin-left: 75px;
-        margin-top: 485px;
+        margin-top: 445px;
         margin-bottom: 5px;
     }
 
@@ -182,7 +182,7 @@
         word-wrap: break-spaces;
         position: absolute;
         margin-left: 75px;
-        margin-top: 460px;
+        margin-top: 420px;
         margin-bottom: 5px;
     }
 

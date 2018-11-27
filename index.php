@@ -15,9 +15,9 @@ $certificateST  = $PDOX->prepare("SELECT * FROM {$p}certificate WHERE link_id = 
 $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
 
-$issueName = !$certificate || $certificate["issued_by"] == null ? "ex: 'Robert Hooke'" : $certificate["issued_by"];
-$titleDis = !$certificate || $certificate["title"] == null ? "ex: 'Module on Hooke's Law'" : $certificate["title"];
-$headerDis = !$certificate || $certificate["header"] == null ? "ex: 'Certificate of Completion'" : $certificate["header"];
+$issueName = !$certificate || $certificate["issued_by"] == null ? "ex: Robert Hooke" : $certificate["issued_by"];
+$titleDis = !$certificate || $certificate["title"] == null ? "ex: Module on Hooke's Law" : $certificate["title"];
+$headerDis = !$certificate || $certificate["header"] == null ? "ex: Certificate of Completion" : $certificate["header"];
 $deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
 
 if ($_SERVER['REQUEST_METHOD']== 'POST' && $USER->instructor) {
@@ -138,7 +138,7 @@ if($USER->instructor) {
                 <label class="inputs" for="issueDep">Issuing Department/Unit:</label>
             </div>
             <div class="col-sm-8">
-                <input maxlength="80" class="form-control" id="department" name="department" placeholder="ex: 'Department of Mechanical Engineering">
+                <input maxlength="80" class="form-control" id="department" name="department" placeholder="ex: Department of Mechanical Engineering">
                 <label class="inputs" for="department">(Optional)</label>
             </div>
         </div>
@@ -214,15 +214,23 @@ if($USER->instructor) {
 
             </form>
         </div>
-    <hr class="hr">
-    <p class="preview">Preview</p>
         <?php
         if($certificate) {
                 ?>
+                <hr class="hr">
+                <div class="container">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm">
+                        <p class="preview">Preview</p>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
                 <div class="certBack">
                     <br><br>
                     <br><br>
-                    <div id="resize" class="title1edit"><?= $headerDis ?></div>
+                    <div class="title1edit"><?= $headerDis ?></div>
                     <br><br>
                     <p class="line2">This is to certify that</p>
 
@@ -233,7 +241,7 @@ if($USER->instructor) {
                     <p class="line4">on</p>
                     <p class="title3edit2">Date Awarded</p>
                     <?php
-                    if($certificate["DETAILS"]==" ") {
+                    if(!$certificate["DETAILS"]=="") {
                         ?>
                         <p class="detailsHead">Certificate Requirements:</p>
                         <p class="detailsEdit"><?= $certificate['DETAILS'] ?></p>
@@ -246,17 +254,6 @@ if($USER->instructor) {
                     <p class="deptEdit"><?= $deptDis ?></p>
                 </div>
                 <?php
-        }
-        else {
-            ?>
-            <br><br>
-            <div class="noCert">
-                <div class="noPreview">
-                    No Preview Available
-                </div>
-            </div>
-            </div>
-            <?php
         }
 
 }  else if($_SERVER['REQUEST_METHOD'] == 'GET' && !$USER->instructor) {
