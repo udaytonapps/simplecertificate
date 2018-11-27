@@ -38,7 +38,12 @@ $OUTPUT->bodyStart();
 if(!$USER->instructor) {
     if (!$certificate) {
         ?>
-        <h1>No certificate exists.</h1>
+        <div class="col-sm-6">
+            <h1 class="text-muted">No certificates are available.</h1>
+        </div>
+        <div class="col-sm-6">
+            <img class="noCertPic" src="images/undraw_checklist_7q37.svg">
+        </div>
         <?php
     } else {
             ?>
