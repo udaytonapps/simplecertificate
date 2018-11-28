@@ -11,9 +11,9 @@ $certificateST  = $PDOX->prepare("SELECT * FROM {$p}certificate WHERE link_id = 
 $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
 
-$issueName = !$certificate || $certificate["issued_by"] == null ? "ex: Robert Hooke" : $certificate["issued_by"];
-$titleDis = !$certificate || $certificate["title"] == null ? "ex: Module on Hooke's Law" : $certificate["title"];
-$headerDis = !$certificate || $certificate["header"] == null ? "ex: Certificate of Completion" : $certificate["header"];
+$issueName = !$certificate || $certificate["issued_by"] == null ? "Robert Hooke" : $certificate["issued_by"];
+$titleDis = !$certificate || $certificate["title"] == null ? "Module on Hooke's Law" : $certificate["title"];
+$headerDis = !$certificate || $certificate["header"] == null ? "Certificate of Completion" : $certificate["header"];
 $deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
 
 if($certificate) {
