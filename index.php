@@ -15,9 +15,9 @@ $certificateST  = $PDOX->prepare("SELECT * FROM {$p}certificate WHERE link_id = 
 $certificateST->execute(array(":linkId" => $LINK->id));
 $certificate = $certificateST->fetch(PDO::FETCH_ASSOC);
 
-$issueName = !$certificate || $certificate["issued_by"] == null ? "ex: Robert Hooke" : $certificate["issued_by"];
-$titleDis = !$certificate || $certificate["title"] == null ? "ex: Module on Hooke's Law" : $certificate["title"];
-$headerDis = !$certificate || $certificate["header"] == null ? "ex: Certificate of Completion" : $certificate["header"];
+$issueName = !$certificate || $certificate["issued_by"] == null ? "Robert Hooke" : $certificate["issued_by"];
+$titleDis = !$certificate || $certificate["title"] == null ? "Module on Hooke's Law" : $certificate["title"];
+$headerDis = !$certificate || $certificate["header"] == null ? "Certificate of Completion" : $certificate["header"];
 $deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
 
 if ($_SERVER['REQUEST_METHOD']== 'POST' && $USER->instructor) {
@@ -78,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD']== 'POST' && $USER->instructor) {
 
 $OUTPUT->header();
 ?>
-    <link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="main.css" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <?php
 
 $OUTPUT->bodyStart();
@@ -89,10 +90,10 @@ if($USER->instructor) {
         <div>
             <a href="usage.php" class="btn btn-primary pull-right"><span class="fa fa-eye"
                                                                          aria-hidden="true"></span> Certificates Earned</a>
-            <h1 class="header">Simple Certificate Tool</h1>
-            <p class="instructions">Fill out fields below to create your certificate. You'll be able to see a
-                preview of how the certificate will look when filled out at the bottom of the page. You can also track
-                those that have earned the certificate under the 'Certificates Earned' button.</p>
+            <h1 class="header">Simple Certificate<a href="https://ewiki.udayton.edu/Isidore/Simple_Certificate" class="link1"><span class="fa fa-share-square-o" aria-hidden="true"></span><u>How do students earn certificates?</u></a></h1>
+
+            <p class="instructions">Fill out the fields below to create your certificate. You'll be able to see a preview of how the certificate will
+            look at the bottom of the page. You can also track those that have earned the certificate under the 'Certificates Earned' button.</p>
         </div>
     <br>
     <?php
@@ -114,7 +115,7 @@ if($USER->instructor) {
                 <label class="inputs" for="header">Title of Certificate:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="29" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
+                <input maxlength="27" class="form-control" id="header" name="header" placeholder="<?= $headerDis ?>">
             </div>
         </div>
         <div class="container">
@@ -122,7 +123,7 @@ if($USER->instructor) {
                 <label class="inputs" for="title">Title of Achievement:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="50" class="form-control" id="title" name="title" placeholder="<?= $titleDis ?>">
+                <input maxlength="36" class="form-control" id="title" name="title" placeholder="<?= $titleDis ?>">
             </div>
         </div>
         <div class="container">
@@ -130,7 +131,7 @@ if($USER->instructor) {
                 <label class="inputs" for="issued_by">Awards Issued By:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="40" class="form-control" id="issued_by" name="issued_by" placeholder="<?= $issueName ?>">
+                <input maxlength="24" class="form-control" id="issued_by" name="issued_by" placeholder="<?= $issueName ?>">
             </div>
         </div>
         <div class="container">
@@ -138,7 +139,7 @@ if($USER->instructor) {
                 <label class="inputs" for="issueDep">Issuing Department/Unit:</label>
             </div>
             <div class="col-sm-8">
-                <input maxlength="80" class="form-control" id="department" name="department" placeholder="ex: Department of Mechanical Engineering">
+                <input maxlength="80" class="form-control" id="department" name="department" placeholder="Department of Mechanical Engineering">
                 <label class="inputs" for="department">(Optional)</label>
             </div>
         </div>
@@ -159,7 +160,7 @@ if($USER->instructor) {
                 <label class="inputs" for="header">Title of Certificate:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="29" class="form-control" id="header" name="header" value="<?= $headerDis ?>">
+                <input maxlength="27" class="form-control" id="header" name="header" value="<?= $headerDis ?>">
             </div>
         </div>
         <div class="container">
@@ -167,7 +168,7 @@ if($USER->instructor) {
                 <label class="inputs" for="title">Title of Achievement:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="50" class="form-control" id="title" name="title" value="<?= $titleDis ?>">
+                <input maxlength="36" class="form-control" id="title" name="title" value="<?= $titleDis ?>">
             </div>
         </div>
         <div class="container">
@@ -175,7 +176,7 @@ if($USER->instructor) {
                 <label class="inputs" for="issued_by">Awards Issued By:</label>
             </div>
             <div class="col-sm-9">
-                <input maxlength="40" class="form-control" id="issued_by" name="issued_by" value="<?= $issueName ?>">
+                <input maxlength="24" class="form-control" id="issued_by" name="issued_by" value="<?= $issueName ?>">
             </div>
         </div>
         <div class="container">
