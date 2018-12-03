@@ -164,7 +164,7 @@ if($USER->instructor) {
         <div>
             <a href="usage.php" class="btn btn-primary pull-right"><span class="fa fa-eye"
                                                                          aria-hidden="true"></span> Certificates Earned</a>
-            <h1 class="header">Simple Certificate<a href="https://ewiki.udayton.edu/Isidore/Simple_Certificate" class="link1"><span class="fa fa-share-square-o" aria-hidden="true"></span><u>How do students earn certificates?</u></a></h1>
+            <h1 class="header">Simple Certificate<a href="https://ewiki.udayton.edu/Isidore/Simple_Certificate" target="_blank" class="link1"><span class="fa fa-share-square-o" aria-hidden="true"></span><u>How do students earn certificates?</u></a></h1>
 
             <p class="instructions">Fill out the fields below to create your certificate. You'll be able to see a preview of how the certificate will
             look at the bottom of the page. You can also track those that have earned the certificate under the 'Certificates Earned' button.</p>
