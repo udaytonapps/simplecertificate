@@ -1,8 +1,29 @@
-.certBack {
+.certBack1 {
     height: 7.9in;
     width: 11in;
-    background-image: url("images/certBack2.png") !important;
-    background-size:11in 7.9in;
+    background-image: url("images/certBack1.png") !important;
+    background-size: 11in 7.9in;
+}
+
+.certBack2 {
+    height: 7.9in;
+    width: 11in;
+    background-image: url("images/Cert3-ColorMedal.jpg") !important;
+    background-size: 11in 7.9in;
+}
+
+.certBack3 {
+    height: 7.9in;
+    width: 11in;
+    background-image: url("images/Cert2-BlackFormat.jpg") !important;
+    background-size: 11in 7.9in;
+}
+
+.certBackImg {
+    height: 7.9in;
+    width: 11in;
+    position: absolute;
+    -webkit-print-color-adjust: exact;
 }
 
 .fields {
@@ -15,13 +36,6 @@
     width: 1000px;
     position: center;
     margin-left: 2.5vw;
-}
-
-.certBack2 {
-    height: 8.5in;
-    width: 11in;
-    position: absolute;
-    -webkit-print-color-adjust: exact;
 }
 
 .titleCont {
@@ -148,7 +162,7 @@
     position: absolute;
     margin-left: 645px;
     margin-top: 485px;
-    width:360px;
+    width:358px;
     border-width: 1px;
     border-style: inset;
     border-top: black;
@@ -186,7 +200,7 @@
     word-wrap: break-spaces;
     position: absolute;
     margin-left: 75px;
-    margin-top: 425px;
+    margin-top: 410px;
     margin-bottom: 5px;
 }
 
@@ -197,7 +211,7 @@
     word-wrap: break-spaces;
     position: absolute;
     margin-left: 75px;
-    margin-top: 400px;
+    margin-top: 385px;
     margin-bottom: 5px;
 }
 
@@ -293,4 +307,12 @@
 .btn-success {
     margin-left: 5px;
     margin-bottom: 10px
+}
+
+.dropdown {
+    margin-bottom: 5px;
+}
+
+.noUsage {
+    margin-top: 120px;
 }

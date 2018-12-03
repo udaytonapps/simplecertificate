@@ -2,7 +2,7 @@
     @page { size: auto;
             margin: 0; }
 
-    .certBack2 {
+    .certBackImg {
         height: 7.9in;
         width: 11in;
         position: absolute;
@@ -142,7 +142,7 @@
         position: absolute;
         margin-left: 645px;
         margin-top: 485px;
-        width:360px;
+        width:358px;
         word-wrap: break-spaces;
         border-width: 1px;
         border-style: inset;

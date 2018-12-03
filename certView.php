@@ -53,7 +53,21 @@ if(!$USER->instructor) {
             </div>
             <div id="printArea">
                 <div class="certBack">
-                    <img src="images/certBack2.png" class="certBack2">
+                <?php
+                if($certificate['background'] == 1) {
+                    ?>
+                    <img src="images/certBack1.png" class="certBackImg">
+                    <?php
+                } else if($certificate['background'] == 2) {
+                    ?>
+                    <img src="images/Cert3-ColorMedal.jpg" class="certBackImg">
+                    <?php
+                } else if($certificate['background'] == 3) {
+                    ?>
+                    <img src="images/Cert2-BlackFormat.jpg" class="certBackImg">
+                    <?php
+                }
+                ?>
                     <br><br>
                     <br><br>
                     <div class="title1edit"><?= $headerDis ?></div>

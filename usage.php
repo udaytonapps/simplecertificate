@@ -44,16 +44,19 @@ if($USER->instructor) {
     <?php
     if (!$userList) {
         ?>
-        <div class="container">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-4">
-                <img class="noCertPic" src="images/undraw_community_8nwl.svg">
+        <div class="noUsage">
+            <div class="container">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <img class="noCertPic" src="images/undraw_community_8nwl.svg">
+                </div>
+                <div class="col-sm-7">
+                    <h1 class="text-muted">No certificates have been earned.</h1>
+                </div>
+
             </div>
-            <div class="col-sm-7">
-                <h1 class="text-muted">No certificates have been earned.</h1>
-            </div>
-            
         </div>
+
         <?php
     } else {
         ?>
