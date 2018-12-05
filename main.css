@@ -311,6 +311,8 @@
 
 .dropdown {
     margin-bottom: 5px;
+    height: 35px;
+    width: 175px;
 }
 
 .noUsage {

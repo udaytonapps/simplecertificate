@@ -7,6 +7,7 @@ $p = $CFG->dbprefix;
 
 $LAUNCH = LTIX::requireData();
 
+
 $currentTime = new DateTime('now', new DateTimeZone($CFG->timezone));
 $currentTime = $currentTime->format("Y-m-d H:i:s");
 
@@ -18,6 +19,7 @@ $issueName = !$certificate || $certificate["issued_by"] == null ? "Robert Hooke"
 $titleDis = !$certificate || $certificate["title"] == null ? "Module on Hooke's Law" : $certificate["title"];
 $headerDis = !$certificate || $certificate["header"] == null ? "Certificate of Completion" : $certificate["header"];
 $deptDis = !$certificate || $certificate["department"] == null ? "" : $certificate["department"];
+$selected = !$certificate || $certificate["background"] == null ? "1" : $certificate["background"];
 
 if ($_SERVER['REQUEST_METHOD']== 'POST' && $USER->instructor) {
     $background = isset($_POST["background"]) ? $_POST["background"] : " ";
@@ -82,6 +84,17 @@ $OUTPUT->header();
 ?>
 <link rel="stylesheet" type="text/css" href="main.css" xmlns="http://www.w3.org/1999/html">
     <script>
+        $('#background').on('change', function() {
+            // Save value in localstorage
+            localStorage.setItem("background", $(this).val());
+        });
+
+        $(document).ready(function() {
+            if ($('#background').length) {
+                $('#background').val(localStorage.getItem("background"));
+            }
+        });
+
         var x, i, j, selElmnt, a, b, c;
         x = document.getElementsByClassName("background");
         for (i = 0; i < x.length; i++) {
@@ -164,7 +177,7 @@ if($USER->instructor) {
         <div>
             <a href="usage.php" class="btn btn-primary pull-right"><span class="fa fa-eye"
                                                                          aria-hidden="true"></span> Certificates Earned</a>
-            <h1 class="header">Simple Certificate<a href="https://ewiki.udayton.edu/Isidore/Simple_Certificate" target="_blank" class="link1"><span class="fa fa-share-square-o" aria-hidden="true"></span><u>How do students earn certificates?</u></a></h1>
+            <h1 class="header">Simple Certificate<a href="https://ewiki.udayton.edu/isidore/Simple_Certificate" target="_blank" class="link1"><span class="fa fa-share-square-o" aria-hidden="true"></span><u>How do students earn certificates?</u></a></h1>
 
             <p class="instructions">Fill out the fields below to create your certificate. You'll be able to see a preview of how the certificate will
             look at the bottom of the page. You can also track those that have earned the certificate under the 'Certificates Earned' button.</p>
@@ -189,7 +202,8 @@ if($USER->instructor) {
                 <label class="inputs" for="background">Certificate Background:</label>
             </div>
             <div class="col-sm-9">
-                <select class="dropdown" id="background" name="background">
+                <select class="dropdown" id="background" name="background" >
+                    <option value="" selected disabled hidden>Choose Background</option>
                     <option value="1">Blue Ribbon</option>
                     <option value="2">Gold Medal</option>
                     <option value="3">Dark</option>
@@ -247,9 +261,28 @@ if($USER->instructor) {
             </div>
             <div class="col-sm-9">
                 <select class="dropdown" id="background" name="background">
-                    <option value="1">Blue Ribbon</option>
-                    <option value="2">Gold Medal</option>
-                    <option value="3">Dark</option>
+                    <?php
+                    if($selected == 1) {
+                        ?>
+                        <option value="1" selected>Blue Ribbon</option>
+                        <option value="2">Gold Medal</option>
+                        <option value="3">Dark</option>
+                        <?php
+                    } else if($selected == 2) {
+                        ?>
+                        <option value="1">Blue Ribbon</option>
+                        <option value="2" selected>Gold Medal</option>
+                        <option value="3">Dark</option>
+                        <?php
+                    } else {
+                        ?>
+                        <option value="1">Blue Ribbon</option>
+                        <option value="2">Gold Medal</option>
+                        <option value="3" selected>Dark</option>
+                        <?php
+                    }
+                    ?>
+
                 </select>
             </div>
         </div>
