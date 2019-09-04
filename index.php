@@ -170,6 +170,7 @@ $OUTPUT->header();
 <?php
 
 $OUTPUT->bodyStart();
+$OUTPUT->flashMessages();
 
 if($USER->instructor) {
     ?>
@@ -183,9 +184,6 @@ if($USER->instructor) {
             look at the bottom of the page. You can also track those that have earned the certificate under the 'Certificates Earned' button.</p>
         </div>
     <br>
-    <?php
-    $OUTPUT->flashMessages();
-    ?>
         <div class="container">
             <form method="post" class="form-inline">
                 <div class="container">
